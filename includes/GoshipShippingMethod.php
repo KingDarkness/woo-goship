@@ -29,7 +29,7 @@ class GoshipShippingMethod extends WC_Shipping_Method
     public function init()
     {
         // Load the settings API
-        // $this->init_settings();
+        $this->init_settings();
         $this->init_form_fields();
 
         $this->enabled = isset($this->settings['enabled']) ? $this->settings['enabled'] : $this->enabled;
@@ -156,7 +156,7 @@ class GoshipShippingMethod extends WC_Shipping_Method
                 $rate = [
                         'id' => $value['id'],
                         'label' => '[' . $value['service'] . '] ' .$value['carrier_name'],
-                        'cost' => $value['total_amount']
+                        'cost' => $value['total_fee']
                     ];
                 $this->add_rate($rate);
             }

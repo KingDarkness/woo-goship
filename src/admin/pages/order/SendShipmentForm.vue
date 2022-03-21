@@ -317,8 +317,8 @@
                     <div style="width: 30%; text-align: center">
                       {{ rate.service }}
                     </div>
-                    <div style="width: 30%; text-align: end">
-                      {{ rate.total_fee }}
+                    <div style="width: 30%; text-align: end; color: red">
+                      {{ formatCurrency(rate.total_fee) }}
                     </div>
                   </label>
                 </div>
