@@ -1,0 +1,9 @@
+.send-shipment-goship:after {
+  content: "\f124";
+  font-family: Dashicons;
+}
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

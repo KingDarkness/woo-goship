@@ -1,0 +1,23 @@
+{
+  "name": "goship/woo-goship",
+  "description": "A WordPress Vue.js starter plugin",
+  "type": "wordpress-plugin",
+  "authors": [
+    {
+      "name": "nguyentranhoan",
+      "email": "nguyentranhoan13@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {
+      "App\\": "includes/"
+    }
+  },
+  "require-dev": {
+    "php-stubs/woocommerce-stubs": "dev-master"
+  },
+  "require": {
+    "kingdarkness/goship": "dev-master"
+  }
+}
