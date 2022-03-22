@@ -270,9 +270,7 @@ export default {
       )
     },
 
-    onActionClick(action, row) {
-      console.log(action, row)
-    },
+    onActionClick(action, row) {},
 
     onBulkAction(action, items) {},
 

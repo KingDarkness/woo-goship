@@ -238,7 +238,6 @@ export default {
       shipment.getDetail(shipmentCode, {}, (response) => {
         this.shipment = response
         this.loadShipment = false
-        console.log(response)
       })
     },
   },

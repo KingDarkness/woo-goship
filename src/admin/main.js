@@ -8,7 +8,6 @@ import 'select2/dist/css/select2.css'
 import './style.css'
 
 Vue.config.productionTip = false
-console.log(WEB_GLOBAL_JS_VARIABLES)
 
 Vue.mixin({
   computed: {

@@ -94,9 +94,6 @@ class GoshipShippingMethod extends WC_Shipping_Method
      */
     public function calculate_shipping($package = [])
     {
-        // We will add the cost, rate and logics in here
-        // dd(WC()->checkout->get_value('billing_city'));
-        // $postData = $_SESSION['gs_ship_destination'];
         parse_str($_POST['post_data'], $postData);
         // $postData = $_SESSION['gs_ship_destination'];
         if (isset($_SESSION['gs_ship_destination']) && count($_SESSION['gs_ship_destination'])) {
@@ -146,7 +143,6 @@ class GoshipShippingMethod extends WC_Shipping_Method
 
         try {
             $rates = $goship->getRates($data);
-            // dd($rates);
         } catch (ValidateException $e) {
             print_r($e->errors);
         }

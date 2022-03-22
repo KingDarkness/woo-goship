@@ -20,7 +20,6 @@ class Frontend
             add_filter('woocommerce_checkout_fields', [$this, 'customCheckoutFields']);
             add_filter('woocommerce_checkout_fields', [$this, 'sortCheckoutFields']);
             add_filter('woocommerce_cart_shipping_packages', [$this, 'customCartShippingPackages'], 10, 1);
-            // add_filter('woocommerce_after_checkout_validation', [$this, 'customCheckoutProcess'], 10, 2);
         }
     }
 
@@ -46,11 +45,6 @@ class Frontend
         if (isset($_SESSION['gs_ship_destination'])) {
             unset($_SESSION['gs_ship_destination']);
         }
-    }
-
-    public function customCheckoutProcess($fields, $errors)
-    {
-        dd(\WC()->shipping()->get_packages()[0]['rates']);
     }
 
     public function enqueueScripts()

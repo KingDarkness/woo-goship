@@ -230,7 +230,6 @@ export default {
     },
 
     onActionClick(action, row) {
-      console.log(action, row)
       switch (action) {
         case 'edit':
           this.doEdit(row)
