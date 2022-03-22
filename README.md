@@ -3,6 +3,13 @@
 Plugin kết nối goship cho woocommerce
 [goship.io](https://goship.io)
 
+## Changelog
+
+### 1.0
+
+- First release.
+- Upload to WordPress.org
+
 ## dev
 
 Clone this repository in your plugins folder

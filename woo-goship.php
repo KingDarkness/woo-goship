@@ -12,7 +12,7 @@ License: GPLv2 or later
 */
 
 /**
- * Copyright (c) YEAR Your Name (email: Email). All rights reserved.
+ * Copyright (c) 2022 NguyenTranHoan (email: nguyentranhoan13@gmail.com). All rights reserved.
  *
  * Released under the GPL license
  * http://www.opensource.org/licenses/gpl-license.php
@@ -75,7 +75,7 @@ final class WooGoship
      *
      * @var string
      */
-    public $version = '0.1.0';
+    public $version = '1.0.0';
 
     /**
      * Holds various class instances
