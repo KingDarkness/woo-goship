@@ -1,5 +1,5 @@
 === WooGoship ===
-Contributors: nguyentranhoan13@gmail.com
+Contributors: nguyentranhoan13
 Donate link:
 Tags: 1.0
 Requires at least: 4.7

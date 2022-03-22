@@ -116,9 +116,10 @@ class GoshipShippingMethod extends WC_Shipping_Method
             $quantity = $values['quantity'];
             $cod = $cod + $values['line_total'];
             $weight = $weight + ($values['data']->get_weight() * $quantity);
-            $weight = $weight > 50 ? $weight : 50;
         }
 
+        $weight = self::convertToGoshipWeight($weight, get_option('woocommerce_weight_unit'));
+        $weight = $weight > 50 ? $weight : 50;
 
         if ($payment_method != 'cod') {
             $cod = 0;
@@ -207,5 +208,17 @@ class GoshipShippingMethod extends WC_Shipping_Method
         </div>
         <?php
         parent::admin_options();
+    }
+
+    public static function convertToGoshipWeight($weight, $unit = 'g')
+    {
+        switch ($unit) {
+            case 'kg':
+                return ceil($weight * 1000);
+            case 'oz':
+                return ceil($weight * 28.35);
+            default:
+                return $weight;
+        }
     }
 }

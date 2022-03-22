@@ -1,6 +1,7 @@
 <?php
 namespace App\Api;
 
+use App\GoshipShippingMethod;
 use App\Model\GsPickup;
 use Kingdarkness\Goship\V2\Shipment;
 use WP_REST_Controller;
@@ -60,10 +61,12 @@ class Order extends WP_REST_Controller
 
                 $cod = $cod + $product['total'];
                 $weight = $weight + ($itemWeight * $quantity);
-                $weight = $weight > 50 ? $weight : 50;
 
                 $productName[] = $quantity . ' x ' . $product->get_name();
             }
+
+            $weight = GoshipShippingMethod::convertToGoshipWeight($weight, get_option('woocommerce_weight_unit'));
+            $weight = $weight > 50 ? $weight : 50;
 
             if ($order->get_payment_method() != 'cod') {
                 $cod = 0;
