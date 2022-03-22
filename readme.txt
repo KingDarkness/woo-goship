@@ -1,4 +1,4 @@
-=== WooGoship ===
+=== Woo Goship - Woocommerce with Goship ===
 Contributors: nguyentranhoan13
 Donate link:
 Tags: 1.0

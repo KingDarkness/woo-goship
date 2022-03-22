@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Goship Woocommerce
+Plugin Name: Woo Goship - Woocommerce with Goship
 Plugin URI: https://goship.io/
 Description: A Woocommerce plugin by Goship
 Version: 0.1
