@@ -18,7 +18,10 @@ $ npm run dev
 ## build for production
 
 ```bash
-$ composer install --prefer-dist
+$ rm -rf vendor
+$ composer install --prefer-dist --no-dev
 $ npm run build
+$ cd ..
+$ zip -r woo-goship.zip  ./woo-goship -x ./woo-goship/node_modules/\*
 
 ```

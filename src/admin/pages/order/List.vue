@@ -96,7 +96,7 @@
           @click="cancelShipment(data.row)"
           v-if="
             orderMeta(data.row)._gs_code &&
-            orderMeta(data.row)._gs_status != 914
+            [901, 902, 900].includes(parseInt(orderMeta(data.row)._gs_status))
           "
         >
           Hủy
