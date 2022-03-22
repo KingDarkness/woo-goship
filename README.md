@@ -1,3 +1,8 @@
+# Giới thiệu
+
+Plugin kết nối goship cho woocommerce
+[goship.io](https://goship.io)
+
 ## dev
 
 Clone this repository in your plugins folder

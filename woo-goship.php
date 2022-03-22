@@ -8,6 +8,7 @@ Author: Nguyễn Trần Hoàn
 Author URI: https://goship.io/
 Text Domain: woogoship
 Domain Path: /languages
+License: GPLv2 or later
 */
 
 /**
