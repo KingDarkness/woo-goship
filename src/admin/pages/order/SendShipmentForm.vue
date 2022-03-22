@@ -153,7 +153,7 @@
 
               <div class="form-field">
                 <label>Dài x Rộng x Cao (cm)</label>
-                <div style="display: flex; align-items: center">
+                <div style="display: flex; align-items: center; width: 97%">
                   <ValidationProvider rules="numeric" v-slot="{ errors }">
                     <input
                       type="text"

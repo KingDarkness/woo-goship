@@ -34,11 +34,17 @@
       </template>
       <template slot="total" slot-scope="data">
         <span v-if="orderMeta(data.row)._gs_fee">
-          Phí: {{ formatCurrency(orderMeta(data.row)._gs_fee) }}
+          Phí:
+          <span style="color: red">{{
+            formatCurrency(orderMeta(data.row)._gs_fee)
+          }}</span>
         </span>
         <br />
         <span v-if="orderMeta(data.row)._gs_cod">
-          COD: {{ formatCurrency(orderMeta(data.row)._gs_cod) }}
+          COD:
+          <span style="color: red">{{
+            formatCurrency(orderMeta(data.row)._gs_cod)
+          }}</span>
         </span>
       </template>
       <template slot="carrier" slot-scope="data">

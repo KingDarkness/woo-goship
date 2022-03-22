@@ -96,7 +96,9 @@
               <p class="text-bold">COD:</p>
             </div>
             <div class="">
-              <p>{{ formatCurrency(shipment.parcel.cod_amount) }}</p>
+              <p style="color: red">
+                {{ formatCurrency(shipment.parcel.cod_amount) }}
+              </p>
             </div>
           </div>
           <div class="d-flex justify-content-space-between">
@@ -104,7 +106,7 @@
               <p class="text-bold">Tổng phí:</p>
             </div>
             <div class="">
-              <p>{{ formatCurrency(shipment.total_fee) }}</p>
+              <p style="color: red">{{ formatCurrency(shipment.total_fee) }}</p>
             </div>
           </div>
         </div>
