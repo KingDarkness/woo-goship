@@ -34,6 +34,6 @@ $ rm -rf vendor
 $ composer install --prefer-dist --no-dev
 $ npm run build
 $ cd ..
-$ zip -r woo-goship.zip  ./woo-goship -x ./woo-goship/node_modules/\*
+$ zip -r woo-goship.zip  ./woo-goship -x ./woo-goship/node_modules/\* -x ./woo-goship/.git/\* -x ./woo-goship/.github/\*
 
 ```
