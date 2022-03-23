@@ -185,26 +185,12 @@ class GoshipShippingMethod extends WC_Shipping_Method
             <div class="wf-banner updated below-h2">
             <p class="main">
                 <ul>
-                    <li><strong>Cấu hình để bắt đầu xử dụng goship.</strong></li>
+                    <li><strong>Cấu hình để bắt đầu xử dụng Goship.</strong></li>
+                    <li><strong>B1. Điền thông tin xác thực tài khoản Goship tại form bên dưới. Cách lấy thông tin xác thực <a href="https://doc.goship.io" target="_blank">tại đây</a></strong></li>
+                    <li><strong>B2. Hãy copy&paste link sau vào cấu hình webhook trên Goship: <?php echo rest_url('/goship/v1/webhook'); ?></strong></li>
+                    <li><strong>B3. Cài đặt điểm lấy hàng <a href="<?php echo admin_url('/admin.php?page=woo-goship#/pickups'); ?>" target="_blank">tại đây</a></strong></li>
                 </ul>
             </p>
-            <p><a href="https://doc.goship.io" target="_blank" class="button button-primary">Link tài liệu kết nối</a></p>
-            <p class="main">
-                <ul>
-                    <li><strong>URL nhận webhook.</strong></li>
-                </ul>
-            </p>
-            <p>
-                <b><?php echo rest_url('/goship/v1/webhook'); ?></b>
-                <br /><br /> <small>Hãy sử dụng URL trên vào cấu hình nhận tin webhook trên Goship</small>
-            </p>
-
-            <p class="main">
-                <ul>
-                    <li><strong>Hãy điền biểu mẫu bên dưới sau đó cài đặt điểm lấy hàng ở liên kết bên dưới</strong></li>
-                </ul>
-            </p>
-            <p><a href="<?php echo admin_url('/admin.php?page=woo-goship#/pickups'); ?>" target="_blank" class="button button-default">Cài đặt điểm lấy hàng</a></p>
         </div>
         <?php
         parent::admin_options();

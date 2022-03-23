@@ -1,7 +1,6 @@
 <?php
 namespace App;
 
-use App\Api\Order;
 use WP_REST_Controller;
 
 /**
