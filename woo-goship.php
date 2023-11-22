@@ -3,7 +3,7 @@
 Plugin Name: Woo Goship - Woocommerce with Goship
 Plugin URI: https://goship.io/
 Description: A Woocommerce plugin by Goship
-Version: 0.1
+Version: 0.2
 Author: Nguyễn Trần Hoàn
 Author URI: https://goship.io/
 Text Domain: woogoship
@@ -94,10 +94,10 @@ final class WooGoship
     {
         $this->define_constants();
 
-        register_activation_hook(__FILE__, [ $this, 'activate' ]);
-        register_deactivation_hook(__FILE__, [ $this, 'deactivate' ]);
+        register_activation_hook(__FILE__, [$this, 'activate']);
+        register_deactivation_hook(__FILE__, [$this, 'deactivate']);
 
-        add_action('plugins_loaded', [ $this, 'init_plugin' ]);
+        add_action('plugins_loaded', [$this, 'init_plugin']);
     }
 
     /**
@@ -238,10 +238,10 @@ final class WooGoship
      */
     public function init_hooks()
     {
-        add_action('init', [ $this, 'init_classes' ]);
+        add_action('init', [$this, 'init_classes']);
 
         // Localize our plugin
-        add_action('init', [ $this, 'localization_setup' ]);
+        add_action('init', [$this, 'localization_setup']);
 
         if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')))) {
             add_action('woocommerce_shipping_init', [$this, 'include_goship_shipping_method']);
@@ -258,8 +258,8 @@ final class WooGoship
     public function add_goship_setting_links($links)
     {
         $settings_link = [
-        '<a href="' . admin_url('admin.php?page=wc-settings&tab=shipping&section=' . WOOGOSHIP_SHIP_ID) . '">' . __('Settings', WOOGOSHIP_SHIP_ID) . '</a>',
-       ];
+            '<a href="' . admin_url('admin.php?page=wc-settings&tab=shipping&section=' . WOOGOSHIP_SHIP_ID) . '">' . __('Settings', WOOGOSHIP_SHIP_ID) . '</a>',
+        ];
         return array_merge($settings_link, $links);
     }
 

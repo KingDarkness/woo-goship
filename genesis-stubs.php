@@ -13,7 +13,7 @@ namespace {
          *
          * @var string
          */
-        public $version = '0.1.0';
+        public $version = '0.2.0';
         /**
          * Holds various class instances
          *
@@ -259,7 +259,7 @@ namespace App {
      */
     class Assets
     {
-        function __construct()
+        public function __construct()
         {
         }
         /**
