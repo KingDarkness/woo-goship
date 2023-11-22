@@ -40,7 +40,7 @@ class Goship extends WP_REST_Controller
             [
                 [
                     'methods'             => \WP_REST_Server::READABLE,
-                    'callback'            => [ $this, 'cities' ],
+                    'callback'            => [$this, 'cities'],
                 ]
             ]
         );
@@ -51,7 +51,7 @@ class Goship extends WP_REST_Controller
             [
                 [
                     'methods'             => \WP_REST_Server::READABLE,
-                    'callback'            => [ $this, 'districts' ],
+                    'callback'            => [$this, 'districts'],
                 ]
             ]
         );
@@ -62,7 +62,7 @@ class Goship extends WP_REST_Controller
             [
                 [
                     'methods'             => \WP_REST_Server::READABLE,
-                    'callback'            => [ $this, 'wards' ],
+                    'callback'            => [$this, 'wards'],
                 ]
             ]
         );
@@ -73,8 +73,8 @@ class Goship extends WP_REST_Controller
             [
                 [
                     'methods'             => \WP_REST_Server::READABLE,
-                    'callback'            => [ $this, 'shipments' ],
-                    'permission_callback' => [ $this, 'permissions_check' ],
+                    'callback'            => [$this, 'shipments'],
+                    'permission_callback' => [$this, 'permissions_check'],
                 ]
             ]
         );
@@ -85,8 +85,8 @@ class Goship extends WP_REST_Controller
             [
                 [
                     'methods'             => \WP_REST_Server::CREATABLE,
-                    'callback'            => [ $this, 'createShipment' ],
-                    'permission_callback' => [ $this, 'permissions_check' ],
+                    'callback'            => [$this, 'createShipment'],
+                    'permission_callback' => [$this, 'permissions_check'],
                 ]
             ]
         );
@@ -97,8 +97,8 @@ class Goship extends WP_REST_Controller
             [
                 [
                     'methods'             => \WP_REST_Server::READABLE,
-                    'callback'            => [ $this, 'shipment' ],
-                    'permission_callback' => [ $this, 'permissions_check' ],
+                    'callback'            => [$this, 'shipment'],
+                    'permission_callback' => [$this, 'permissions_check'],
                 ]
             ]
         );
@@ -109,8 +109,8 @@ class Goship extends WP_REST_Controller
             [
                 [
                     'methods'             => \WP_REST_Server::READABLE,
-                    'callback'            => [ $this, 'printShipment' ],
-                    'permission_callback' => [ $this, 'permissions_check' ],
+                    'callback'            => [$this, 'printShipment'],
+                    'permission_callback' => [$this, 'permissions_check'],
                 ]
             ]
         );
@@ -121,8 +121,8 @@ class Goship extends WP_REST_Controller
             [
                 [
                     'methods'             => \WP_REST_Server::DELETABLE,
-                    'callback'            => [ $this, 'deleteShipment' ],
-                    'permission_callback' => [ $this, 'permissions_check' ],
+                    'callback'            => [$this, 'deleteShipment'],
+                    'permission_callback' => [$this, 'permissions_check'],
                 ]
             ]
         );
@@ -133,8 +133,8 @@ class Goship extends WP_REST_Controller
             [
                 [
                     'methods'             => \WP_REST_Server::CREATABLE,
-                    'callback'            => [ $this, 'rates' ],
-                    'permission_callback' => [ $this, 'permissions_check' ],
+                    'callback'            => [$this, 'rates'],
+                    'permission_callback' => [$this, 'permissions_check'],
                 ]
             ]
         );
@@ -145,7 +145,7 @@ class Goship extends WP_REST_Controller
             [
                 [
                     'methods'             => \WP_REST_Server::CREATABLE,
-                    'callback'            => [ $this, 'listenWebhook' ],
+                    'callback'            => [$this, 'listenWebhook'],
                 ]
             ]
         );
@@ -198,9 +198,9 @@ class Goship extends WP_REST_Controller
             $order->save();
             return rest_ensure_response(['message' => 'success']);
         } catch (ValidateException $e) {
-            return new \WP_Error('invalid_data', __('Thiêu thông tin'), [ 'status' => 422, 'errors' => $e->errors ]);
+            return new \WP_Error('invalid_data', __('Thiêu thông tin'), ['status' => 422, 'errors' => $e->errors]);
         } catch (\Exception $th) {
-            return new \WP_Error('invalid_data', $th->getMessage(), [ 'status' => 422, 'exception' => $th->getMessage() ]);
+            return new \WP_Error('invalid_data', $th->getMessage(), ['status' => 422, 'exception' => $th->getMessage()]);
         }
     }
 
@@ -225,7 +225,7 @@ class Goship extends WP_REST_Controller
         ];
         foreach ($required as $key => $name) {
             if (!Arr::get($request, $key)) {
-                return new \WP_Error('invalid_data', __($name . ' không được để trổng'), [ 'status' => 422, 'key' => $key ]);
+                return new \WP_Error('invalid_data', __($name . ' không được để trổng'), ['status' => 422, 'key' => $key]);
             }
         }
 
@@ -236,7 +236,7 @@ class Goship extends WP_REST_Controller
             $response = $this->goship->createShipment($params);
 
             $receiverName = $request['receiver_name'];
-            $receiverName = explode(' ', $request);
+            $receiverName = explode(' ', $request['receiver_name']);
             $firstName =  array_shift($receiverName);
             $lastName = implode(' ', $receiverName);
 
@@ -280,9 +280,9 @@ class Goship extends WP_REST_Controller
             }
             $order->save();
         } catch (ValidateException $e) {
-            return new \WP_Error('invalid_data', __('Thiêu thông tin'), [ 'status' => 422, 'errors' => $e->errors ]);
+            return new \WP_Error('invalid_data', __('Thiêu thông tin'), ['status' => 422, 'errors' => $e->errors]);
         } catch (\Exception $th) {
-            return new \WP_Error('invalid_data', $th->getMessage(), [ 'status' => 422, 'exception' => $th->getMessage() ]);
+            return new \WP_Error('invalid_data', $th->getMessage(), ['status' => 422, 'exception' => $th->getMessage()]);
         }
         return rest_ensure_response($response);
     }
@@ -290,16 +290,16 @@ class Goship extends WP_REST_Controller
     public function rates($request)
     {
         if (! isset($request['from_city'])) {
-            return new \WP_Error('invalid_data', __('Thành phố gửi không được để trổng'), [ 'status' => 422, 'key' => 'from_city' ]);
+            return new \WP_Error('invalid_data', __('Thành phố gửi không được để trổng'), ['status' => 422, 'key' => 'from_city']);
         }
         if (! isset($request['from_district'])) {
-            return new \WP_Error('invalid_data', __('Quận huyện gửi không được để trổng'), [ 'status' => 422, 'key' => 'from_district' ]);
+            return new \WP_Error('invalid_data', __('Quận huyện gửi không được để trổng'), ['status' => 422, 'key' => 'from_district']);
         }
         if (! isset($request['to_city'])) {
-            return new \WP_Error('invalid_data', __('Thành phố nhận không được để trổng'), [ 'status' => 422, 'key' => 'to_city' ]);
+            return new \WP_Error('invalid_data', __('Thành phố nhận không được để trổng'), ['status' => 422, 'key' => 'to_city']);
         }
         if (! isset($request['to_district'])) {
-            return new \WP_Error('invalid_data', __('Quận huyện nhận không được để trổng'), [ 'status' => 422, 'key' => 'to_district' ]);
+            return new \WP_Error('invalid_data', __('Quận huyện nhận không được để trổng'), ['status' => 422, 'key' => 'to_district']);
         }
 
         $response = rest_ensure_response($this->goship->getRates($request->get_params()));
@@ -357,7 +357,7 @@ class Goship extends WP_REST_Controller
 
             return rest_ensure_response(['success' => true]);
         } catch (\Kingdarkness\Goship\Exceptions\UnverifiException $e) {
-            return new \WP_Error('unverify', __('Xác thực không hợp lệ'), [ 'status' => 400 ]);
+            return new \WP_Error('unverify', __('Xác thực không hợp lệ'), ['status' => 400]);
         }
     }
 

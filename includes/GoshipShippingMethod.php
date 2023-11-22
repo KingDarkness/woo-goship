@@ -40,7 +40,7 @@ class GoshipShippingMethod extends WC_Shipping_Method
         $this->allow_customer = isset($this->settings['allow_customer']) && $this->settings['allow_customer'] ? $this->settings['allow_customer'] : 1;
 
         // Save settings in admin if you have any defined
-        add_action('woocommerce_update_options_shipping_' . $this->id, [ $this, 'process_admin_options' ]);
+        add_action('woocommerce_update_options_shipping_' . $this->id, [$this, 'process_admin_options']);
     }
 
     /**
@@ -113,9 +113,9 @@ class GoshipShippingMethod extends WC_Shipping_Method
 
         $payment_method = WC()->session->get('chosen_payment_method');
         foreach ($package['contents'] as $item => $values) {
-            $quantity = $values['quantity'];
-            $cod = $cod + $values['line_total'];
-            $weight = $weight + ($values['data']->get_weight() * $quantity);
+            $quantity = (int) $values['quantity'];
+            $cod = $cod + (int) $values['line_total'];
+            $weight = $weight + ((int)$values['data']->get_weight() * $quantity);
         }
 
         $weight = self::convertToGoshipWeight($weight, get_option('woocommerce_weight_unit'));
@@ -151,10 +151,10 @@ class GoshipShippingMethod extends WC_Shipping_Method
         if (count($rates)) {
             foreach ($rates as $key => $value) {
                 $rate = [
-                        'id' => $value['id'],
-                        'label' => '[' . $value['service'] . '] ' .$value['carrier_name'],
-                        'cost' => $value['total_fee']
-                    ];
+                    'id' => $value['id'],
+                    'label' => '[' . $value['service'] . '] ' .$value['carrier_name'],
+                    'cost' => $value['total_fee']
+                ];
                 $this->add_rate($rate);
             }
         }

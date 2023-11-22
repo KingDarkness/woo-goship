@@ -34,8 +34,8 @@ class Order extends WP_REST_Controller
             [
                 [
                     'methods'             => \WP_REST_Server::READABLE,
-                    'callback'            => [ $this, 'send_order_info' ],
-                    'permission_callback' => [ $this, 'permissions_check' ],
+                    'callback'            => [$this, 'send_order_info'],
+                    'permission_callback' => [$this, 'permissions_check'],
                 ]
             ]
         );
@@ -55,9 +55,9 @@ class Order extends WP_REST_Controller
 
             $items = $order->get_items();
             foreach ($items as $product) {
-                $quantity = $product['quantity'];
+                $quantity = (int) $product['quantity'];
                 $productId = $product['product_id'];
-                $itemWeight = get_post_meta($productId, '_weight', true);
+                $itemWeight = (int) get_post_meta($productId, '_weight', true);
 
                 $cod = $cod + $product['total'];
                 $weight = $weight + ($itemWeight * $quantity);
@@ -116,7 +116,7 @@ class Order extends WP_REST_Controller
                 'helpers' => ['statuses' => Shipment::getStatusText(), 'payers' => [Shipment::CUSTOMER_PAY => 'Người nhận trả', Shipment::SHOP_PAY => 'Người gửi trả']]
             ]);
         } catch (\Exception $th) {
-            return new \WP_Error('invalid_data', $th->getMessage(), [ 'status' => 422, 'exception' => $th->getMessage() ]);
+            return new \WP_Error('invalid_data', $th->getMessage(), ['status' => 422, 'exception' => $th->getMessage()]);
         }
     }
 
